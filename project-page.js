@@ -3,8 +3,9 @@ const page=document.querySelector('[data-project]');if(!page)return;
 const slug=page.dataset.project,title=page.dataset.title,category=page.dataset.category,description=page.dataset.description,tech=page.dataset.tech;
 const businessUrl='https://zu2q8b76urpbz8m2w0ktxw55.macaly.app';
 const live={"business-os":businessUrl,"aeio-business-website":"https://aeiobusiness.com"};
+const repositories={"packet-tracer-vlan-lab":"packet-tracer-vlan-lab","linux-system-hardening-lab":"linux-hardening-lab-fedora","network-monitoring-wireshark-lab":"network-monitoring-wireshark-lab","log-analysis-lab-linux":"log-analysis-lab-linux"};
 const chips=tech.split('·').map(x=>`<span>${x.trim()}</span>`).join('');
-page.innerHTML=`<section class="project-hero"><p class="eyebrow">${category}</p><h1>${title}</h1><p>${description}</p><div class="project-chips">${chips}</div>${live[slug]?`<a class="button button-primary" href="${live[slug]}" target="_blank" rel="noopener noreferrer">Ouvrir le projet en ligne ↗</a>`:''}</section><section id="demo" class="project-demo"></section><a class="back-home bottom-back" href="../../index.html#projets">← Tous les projets</a>`;
+page.innerHTML=`<section class="project-hero"><p class="eyebrow">${category}</p><h1>${title}</h1><p>${description}</p><div class="project-chips">${chips}</div>${live[slug]?`<a class="button button-primary" href="${live[slug]}" target="_blank" rel="noopener noreferrer">Ouvrir le projet en ligne ↗</a>`:''}${repositories[slug]?`<a class="repo-link" href="https://github.com/dacostaanaltino-wq/${repositories[slug]}" target="_blank" rel="noopener noreferrer">Voir le dépôt GitHub ↗</a>`:''}</section><section id="demo" class="project-demo"></section><a class="back-home bottom-back" href="../../index.html#projets">← Tous les projets</a>`;
 const demo=page.querySelector('#demo');
 const shell=(eyebrow,heading,body)=>`<p class="eyebrow">${eyebrow}</p><h2>${heading}</h2><p class="demo-intro">${body}</p>`;
 if(slug==='business-os'){
